@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS USERS (
   userid INT PRIMARY KEY auto_increment,
-  username VARCHAR(20),
+  username VARCHAR(20) UNIQUE,
   salt VARCHAR,
   password VARCHAR,
   firstname VARCHAR(20),
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS NOTES (
 );
 
 CREATE TABLE IF NOT EXISTS FILES (
-    fileId INT PRIMARY KEY auto_increment,
+    fileid INT PRIMARY KEY auto_increment,
     filename VARCHAR,
     contenttype VARCHAR,
     filesize VARCHAR,
