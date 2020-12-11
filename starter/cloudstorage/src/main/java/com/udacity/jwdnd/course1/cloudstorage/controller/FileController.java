@@ -67,6 +67,12 @@ public class FileController {
 
     @PostMapping("/files")
     public String fileUpload(Authentication authentication, @RequestParam("fileUpload") MultipartFile file) {
+
+        if (file.getSize() >= 10485760) {
+            return "redirect:/result?error=" + URLEncoder
+                    .encode("File size must be less than 10MB.", StandardCharsets.UTF_8);
+        }
+
         User user = userService.getAuthenticatedUser(authentication);
 
         try {

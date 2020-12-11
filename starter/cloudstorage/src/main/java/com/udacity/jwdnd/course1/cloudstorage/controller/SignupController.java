@@ -2,6 +2,8 @@ package com.udacity.jwdnd.course1.cloudstorage.controller;
 
 import com.udacity.jwdnd.course1.cloudstorage.model.User;
 import com.udacity.jwdnd.course1.cloudstorage.services.UserService;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,7 @@ public class SignupController {
         }
 
         if (signupError == null) {
-            model.addAttribute("signupSuccess", true);
+            return "redirect:/login?success=" + URLEncoder.encode("You successfully signed up!", StandardCharsets.UTF_8);
         } else {
             model.addAttribute("signupError", signupError);
         }
